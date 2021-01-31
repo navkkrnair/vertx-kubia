@@ -8,7 +8,7 @@ RUN gradle clean shadowJar --no-daemon --stacktrace
 FROM openjdk:8-jre-alpine
 ENV APPROOT="/app"
 WORKDIR $APPROOT
-COPY --from=builder /home/gradle/build/libs/vertx-kubia-1.0-all.jar /app/vertx-kubia-1.0-all.jar
+COPY --from=builder /home/gradle/build/libs/vertx-kubia-1.0-all.jar $APPROOT/vertx-kubia-1.0-all.jar
 ENTRYPOINT ["java"]
-CMD ["-jar","-Xmx128m","-Xms128m","-Djava.security.egd=file:/dev/./urandom", "/app/vertx-kubia-1.0-all.jar"]
+CMD ["-jar","-Xmx128m","-Xms128m","-Djava.security.egd=file:/dev/./urandom", "$APPROOT/vertx-kubia-1.0-all.jar"]
 EXPOSE 8080
