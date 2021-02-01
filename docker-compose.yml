@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  vertx-kubia:
+    image: navkkrnair/vertx-kubia:1.0
+    ports:
+    - 8080:8080
